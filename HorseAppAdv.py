@@ -10,7 +10,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 ##################################################################################
-import streamlit as st
 
 # ---------------------------
 # Initialize session state
@@ -31,6 +30,25 @@ def go_to_dashboard():
 def go_back_to_country():
     st.session_state.page = 'country_selection'
 
+# ---------------------------
+# Page rendering
+# ---------------------------
+if st.session_state.page == 'country_selection':
+    st.title("Select Your Country")
+    country_options = ["South Africa", "Hong Kong", "Malaysia"]
+    st.session_state.country = st.selectbox("Country", country_options, index=0 if st.session_state.country is None else country_options.index(st.session_state.country))
+    
+    if st.button("Next"):
+        go_to_dashboard()
+
+elif st.session_state.page == 'dashboard':
+    st.title(f"Dashboard - {st.session_state.country}")
+    st.write(f"Showing horse race data for {st.session_state.country}")
+
+    if st.button("Back to Country Selection"):
+        go_back_to_country()
+
+
 ####################################################################################
 
 st.set_page_config(page_title="Horse Racing Dashboard", layout="wide", page_icon="🏇")
@@ -44,23 +62,23 @@ st.set_page_config(page_title="Horse Racing Dashboard", layout="wide", page_icon
 # -----------------------------
 # Country selection front page
 # -----------------------------
-if st.session_state.country is None:
-    st.title("🐎 Horse Racing Dashboard")
-    st.subheader("Select a Country")
+# if st.session_state.country is None:
+#     st.title("🐎 Horse Racing Dashboard")
+#     st.subheader("Select a Country")
 
-    col1, col2, col3 = st.columns(3)
+#     col1, col2, col3 = st.columns(3)
 
-    with col1:
-        if st.button("🇿🇦 South Africa"):
-            st.session_state.country = "South Africa"
+#     with col1:
+#         if st.button("🇿🇦 South Africa"):
+#             st.session_state.country = "South Africa"
 
-    with col2:
-        if st.button("🇭🇰 Hong Kong"):
-            st.session_state.country = "Hong Kong"
+#     with col2:
+#         if st.button("🇭🇰 Hong Kong"):
+#             st.session_state.country = "Hong Kong"
 
-    with col3:
-        if st.button("🇲🇾 Malaysia"):
-            st.session_state.country = "Malaysia"
+#     with col3:
+#         if st.button("🇲🇾 Malaysia"):
+#             st.session_state.country = "Malaysia"
 
 # -----------------------------
 # Load country-specific dashboard

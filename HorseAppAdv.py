@@ -10,24 +10,27 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 ##################################################################################
-# # Initialize session state
-# if 'page' not in st.session_state:
-#     st.session_state.page = 'country_selection'
+import streamlit as st
 
-# # Function to go back
-# def go_back():
-#     st.session_state.page = 'country_selection'
-#     # No need to call st.experimental_rerun() in most cases
+# ---------------------------
+# Initialize session state
+# ---------------------------
+if 'page' not in st.session_state:
+    st.session_state.page = 'country_selection'
 
-# # Page navigation
-# if st.session_state.page == 'country_selection':
-#     st.write("Select your country")
-#     if st.button("Next"):
-#         st.session_state.page = 'dashboard'
-# elif st.session_state.page == 'dashboard':
-#     st.write("Dashboard here")
-#     if st.button("Back"):
-#         go_back()
+if 'country' not in st.session_state:
+    st.session_state.country = None
+
+# ---------------------------
+# Functions
+# ---------------------------
+def go_to_dashboard():
+    if st.session_state.country:  # make sure country is selected
+        st.session_state.page = 'dashboard'
+
+def go_back_to_country():
+    st.session_state.page = 'country_selection'
+
 ####################################################################################
 
 st.set_page_config(page_title="Horse Racing Dashboard", layout="wide", page_icon="🏇")
@@ -35,23 +38,9 @@ st.set_page_config(page_title="Horse Racing Dashboard", layout="wide", page_icon
 # -----------------------------
 # Session state for country selection
 # -----------------------------
-if "country" not in st.session_state:
-    st.session_state.country = None
-    
-# Function to go back
-def go_back():
-    st.session_state.page = 'country_selection'
-    # No need to call st.experimental_rerun() in most cases
+# if "country" not in st.session_state:
+#     st.session_state.country = None
 
-# Page navigation
-if st.session_state.page == 'country_selection':
-    st.write("Select your country")
-    if st.button("Next"):
-        st.session_state.page = 'dashboard'
-elif st.session_state.page == 'dashboard':
-    st.write("Dashboard here")
-    if st.button("Back"):
-        go_back()
 # -----------------------------
 # Country selection front page
 # -----------------------------

@@ -30,7 +30,7 @@ def go_to_dashboard():
         st.session_state.page = 'dashboard'
 
 def go_back_to_country():
-    st.session_state.page = 'country_selection'
+    st.session_state.page = 'country'
 
 # ---------------------------
 # Page rendering

@@ -117,12 +117,12 @@ else:
     data_file, result_file = files[country]
 
     @st.cache_data
-    def load_data(data_file, result_file):
-        hist = pd.read_csv(data_file, dtype=str)
-        daily = pd.read_csv(result_file, dtype=str)
-        return hist, daily
+def load_data(data_file, result_file):
+    hist = pd.read_csv(data_file, dtype=str)
+    daily = pd.read_csv(result_file, dtype=str)
+    return hist, daily
 
-    hist, daily = load_data(data_file, result_file)
+hist, daily = load_data(data_file, result_file)
 
     # 👉 Your charts go here
     

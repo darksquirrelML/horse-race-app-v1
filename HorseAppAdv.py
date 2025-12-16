@@ -64,9 +64,9 @@ if st.session_state.page == "country":
 #     country = st.session_state.country
 #     st.header(f"🏁 {country} Horse Racing Dashboard")
 
-#     if st.button("⬅️ Back to Country Selection"):
-#         st.session_state.page = "country"
-#         st.session_state.country = None
+    if st.button("⬅️ Back to Country Selection"):
+        st.session_state.page = "country"
+        st.session_state.country = None
 
 
 ####################################################################################

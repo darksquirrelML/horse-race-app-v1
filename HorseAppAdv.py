@@ -104,7 +104,7 @@ elif st.session_state.page == "dashboard":
 # -----------------------------
     else:
         country = st.session_state.country
-        st.header(f"🏁 {country} Horse Racing Dashboard")
+        # st.header(f"🏁 {country} Horse Racing Dashboard")
     
         # Map country to CSV files
     

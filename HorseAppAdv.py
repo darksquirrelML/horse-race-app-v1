@@ -116,13 +116,11 @@ else:
 
     data_file, result_file = files[country]
 
-    @st.cache_data
+@st.cache_data
 def load_data(data_file, result_file):
     hist = pd.read_csv(data_file, dtype=str)
     daily = pd.read_csv(result_file, dtype=str)
-    return hist, daily
-
-    hist, daily = load_data(data_file, result_file)
+      
 
     # 👉 Your charts go here
     
@@ -146,8 +144,10 @@ def load_data(data_file, result_file):
         daily["PredictedTop3"] = pd.to_numeric(daily.get("Top3_Prediction", daily.get("PredictedTop3", pd.NA)), errors="coerce")
 
         return hist, daily
+hist, daily = load_data(data_file, result_file)
 
-    try:
+##############################################################################################################################
+try:
         hist_df, daily_df = load_data(data_file, result_file)
     except Exception as e:
         st.error(f"Error loading {country} files: {e}")

@@ -81,23 +81,23 @@ elif st.session_state.page == "dashboard":
 # -----------------------------
 # Country selection front page
 # -----------------------------
-if st.session_state.country is None:
-    st.title("🐎 Horse Racing Dashboard")
-    st.subheader("Select a Country")
+# if st.session_state.country is None:
+#     st.title("🐎 Horse Racing Dashboard")
+#     st.subheader("Select a Country")
 
-    col1, col2, col3 = st.columns(3)
+#     col1, col2, col3 = st.columns(3)
 
-    with col1:
-        if st.button("🇿🇦 South Africa"):
-            st.session_state.country = "South Africa"
+#     with col1:
+#         if st.button("🇿🇦 South Africa"):
+#             st.session_state.country = "South Africa"
 
-    with col2:
-        if st.button("🇭🇰 Hong Kong"):
-            st.session_state.country = "Hong Kong"
+#     with col2:
+#         if st.button("🇭🇰 Hong Kong"):
+#             st.session_state.country = "Hong Kong"
 
-    with col3:
-        if st.button("🇲🇾 Malaysia"):
-            st.session_state.country = "Malaysia"
+#     with col3:
+#         if st.button("🇲🇾 Malaysia"):
+#             st.session_state.country = "Malaysia"
 
 # -----------------------------
 # Load country-specific dashboard

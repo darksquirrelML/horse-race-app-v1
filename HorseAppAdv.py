@@ -115,7 +115,13 @@ else:
     }
 
     data_file, result_file = files[country]
+    
+############### Back button
+    if st.button("⬅️ Back to Country Selection"):
+        st.session_state.country = None
+        st.experimental_rerun()
 
+    
     @st.cache_data
     def load_data(data_file, result_file):
         hist = pd.read_csv(data_file, dtype=str)

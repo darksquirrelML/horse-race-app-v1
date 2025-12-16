@@ -122,7 +122,7 @@ def load_data(data_file, result_file):
     daily = pd.read_csv(result_file, dtype=str)
     return hist, daily
 
-hist, daily = load_data(data_file, result_file)
+    hist, daily = load_data(data_file, result_file)
 
     # 👉 Your charts go here
     

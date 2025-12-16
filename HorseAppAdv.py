@@ -44,17 +44,17 @@ if st.session_state.page == "country":
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        if st.button("🇿🇦 South Africa"):
+        if st.button("🇿🇦 South Africa", key="btn_sa"):
             st.session_state.country = "South Africa"
             st.session_state.page = "dashboard"
 
     with col2:
-        if st.button("🇭🇰 Hong Kong"):
+        if st.button("🇭🇰 Hong Kong" key="btn_hk"):
             st.session_state.country = "Hong Kong"
             st.session_state.page = "dashboard"
 
     with col3:
-        if st.button("🇲🇾 Malaysia"):
+        if st.button("🇲🇾 Malaysia" key="btn_my"):
             st.session_state.country = "Malaysia"
             st.session_state.page = "dashboard"
 

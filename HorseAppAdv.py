@@ -59,14 +59,14 @@ if st.session_state.page == "country":
             st.session_state.page = "dashboard"
 
 
-# elif st.session_state.page == "dashboard":
+elif st.session_state.page == "dashboard":
 
-#     country = st.session_state.country
-#     st.header(f"🏁 {country} Horse Racing Dashboard")
+    country = st.session_state.country
+    st.header(f"🏁 {country} Horse Racing Dashboard")
 
-#     if st.button("⬅️ Back to Country Selection"):
-#         st.session_state.page = "country"
-#         st.session_state.country = None
+    if st.button("⬅️ Back to Country Selection"):
+        st.session_state.page = "country"
+        st.session_state.country = None
 
 
 ####################################################################################
@@ -116,10 +116,10 @@ else:
 
     data_file, result_file = files[country]
     
-############### Back button
-    if st.button("⬅️ Back to Country Selection"):
-        st.session_state.country = None
-        st.experimental_rerun()
+# ############### Back button
+#     if st.button("⬅️ Back to Country Selection"):
+#         st.session_state.country = None
+#         st.experimental_rerun()
 
     
     @st.cache_data

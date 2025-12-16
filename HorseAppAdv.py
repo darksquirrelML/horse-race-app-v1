@@ -11,11 +11,13 @@ import plotly.graph_objects as go
 
 ##################################################################################
 
+st.set_page_config(page_title="Horse Racing Dashboard", layout="wide", page_icon="🏇")
+
 # ---------------------------
 # Initialize session state
 # ---------------------------
 if 'page' not in st.session_state:
-    st.session_state.page = 'country_selection'
+    st.session_state.page = 'country'
 
 if 'country' not in st.session_state:
     st.session_state.country = None
@@ -33,25 +35,42 @@ def go_back_to_country():
 # ---------------------------
 # Page rendering
 # ---------------------------
-if st.session_state.page == 'country_selection':
-    st.title("Select Your Country")
-    country_options = ["South Africa", "Hong Kong", "Malaysia"]
-    st.session_state.country = st.selectbox("Country", country_options, index=0 if st.session_state.country is None else country_options.index(st.session_state.country))
-    
-    if st.button("Next"):
-        go_to_dashboard()
 
-elif st.session_state.page == 'dashboard':
-    st.title(f"Dashboard - {st.session_state.country}")
-    st.write(f"Showing horse race data for {st.session_state.country}")
+if st.session_state.page == "country":
 
-    if st.button("Back to Country Selection"):
-        go_back_to_country()
+    st.title("🐎 Horse Racing Dashboard")
+    st.subheader("Select a Country")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        if st.button("🇿🇦 South Africa"):
+            st.session_state.country = "South Africa"
+            st.session_state.page = "dashboard"
+
+    with col2:
+        if st.button("🇭🇰 Hong Kong"):
+            st.session_state.country = "Hong Kong"
+            st.session_state.page = "dashboard"
+
+    with col3:
+        if st.button("🇲🇾 Malaysia"):
+            st.session_state.country = "Malaysia"
+            st.session_state.page = "dashboard"
+
+
+elif st.session_state.page == "dashboard":
+
+    country = st.session_state.country
+    st.header(f"🏁 {country} Horse Racing Dashboard")
+
+    if st.button("⬅️ Back to Country Selection"):
+        st.session_state.page = "country"
+        st.session_state.country = None
 
 
 ####################################################################################
 
-st.set_page_config(page_title="Horse Racing Dashboard", layout="wide", page_icon="🏇")
 
 # -----------------------------
 # Session state for country selection
@@ -88,27 +107,28 @@ else:
     st.header(f"🏁 {country} Horse Racing Dashboard")
 
     # Map country to CSV files
+
     files = {
         "South Africa": ("sa_race_data.csv", "sa_horse_result.csv"),
         "Hong Kong": ("hk_race_data.csv", "hk_horse_result.csv"),
-        "Malaysia": ("mal_race_data.csv", "mal_horse_result.csv")
+        "Malaysia": ("mal_race_data.csv", "mal_horse_result.csv"),
     }
 
     data_file, result_file = files[country]
 
-    # Back button
-    if st.button("⬅️ Back to Country Selection"):
-        st.session_state.country = None
-        st.experimental_rerun()
-
-    # -------------------------
-    # Load data
-    # -------------------------
     @st.cache_data
     def load_data(data_file, result_file):
         hist = pd.read_csv(data_file, dtype=str)
         daily = pd.read_csv(result_file, dtype=str)
+        return hist, daily
 
+    hist, daily = load_data(data_file, result_file)
+
+    # 👉 Your charts go here
+    
+   ##################################################### 
+    
+#####################################################################
         # HISTORICAL
         if "RaceDate" in hist.columns:
             hist["RaceDate"] = pd.to_datetime(hist["RaceDate"], errors="coerce", dayfirst=True)

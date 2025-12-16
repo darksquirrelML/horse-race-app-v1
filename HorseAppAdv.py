@@ -147,7 +147,7 @@ else:
     hist, daily = load_data(data_file, result_file)
 
 ##############################################################################################################################
-try:
+    try:
         hist_df, daily_df = load_data(data_file, result_file)
     except Exception as e:
         st.error(f"Error loading {country} files: {e}")

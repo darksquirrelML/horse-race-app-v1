@@ -64,7 +64,7 @@ if st.session_state.page == "country":
 elif st.session_state.page == "dashboard":
 
     country = st.session_state.country
-    st.header(f"🏁 {country} Horse Racing Dashboard", key="btn_back)
+    st.header(f"🏁 {country} Horse Racing Dashboard", key="btn_back")
 
     if st.button("⬅️ Back to Country Selection"):
         st.session_state.page = "country"

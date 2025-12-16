@@ -67,7 +67,7 @@ elif st.session_state.page == "dashboard":
     if st.button("⬅️ Back to Country Selection"):
         st.session_state.page = "country"
         st.session_state.country = None
-
+        st.stop()   # <-- VERY IMPORTANT
 
 ####################################################################################
 

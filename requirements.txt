@@ -1,6 +1,5 @@
 pandas
-streamlit
+streamlit>=1.36
 matplotlib
 plotly
 altair==4.2.2
-
